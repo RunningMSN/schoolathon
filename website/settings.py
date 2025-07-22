@@ -1,0 +1,1 @@
+DB_SECRETE_KEY = "$bgfabsd%#B"

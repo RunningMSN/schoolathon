@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %}Register{% endblock %} 
+{% block content %}
+<h4>Please tell us a little about yourself!</h4>
+<div class="border rounded p-3">
+	<form method="POST">
+		<div class="form-group">
+			<label for="inputName">What is your name?</label>
+			<input type="name" class="form-control" id="inputName" placeholder="Name" name="name">
+		</div>
+		<div class="form-group">
+			<label for="inputEmail">Email address</label>
+			<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+			<small id="emailHelp" class="form-text text-muted">So we can send you a prize if you win!</small>
+		</div>
+		<div class="form-group">
+			<label for="inputFruit">Which of these fruit do you prefer most?</label>
+			<select class="form-control" id="inputFruit" name="fruit">
+				<option value="" disabled selected hidden>Choose a fruit...</option>
+				{% include "fruit.html" %}
+			</select>
+		</div>
+		<div class="form-group" style="margin-bottom: 5px">
+			<label for="inputTeam">Do you belong to a team?</label>
+			<input type="team" class="form-control" id="inputTeam" placeholder="Team Name" name="team">
+		</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+{% endblock %}

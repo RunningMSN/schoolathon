@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} 
+{% block content %}
+<h4>Log in to get started!</h4>
+<div class="border rounded p-3">
+	<p>
+		Don't have an account? Click <a href="{{ url_for('auth.register') }}">here</a> to register.
+	</p>
+	<form method="POST">
+		<div class="form-group">
+			<label for="inputEmail">Email address</label>
+			<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+		</div>
+		<div class="form-group">
+			<label for="inputFruit">Which of these fruit do you prefer most?</label>
+			<select class="form-control" id="inputFruit" name="fruit">
+				<option value="" disabled selected hidden>Choose a fruit...</option>
+				{% include "fruit.html" %}
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary my-2">Submit</button>
+	</form>
+</div>
+
+
+{% endblock %}

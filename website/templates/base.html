@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Schoolathon{% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    
+<div class="col-lg-8 mx-auto p-3 py-md-5">
+  <header class="d-flex align-items-center pb-2 mb-3 border-bottom">
+    <a href="{{ url_for('pages.home') }}" class="d-flex align-items-center text-dark text-decoration-none">
+      <span class="fs-4">APSA Schoolathon</span>
+    </a>
+    <div class="ms-auto">
+      {% if user.is_authenticated %}
+      <span class="fw-bold text-muted">Welcome {{ user.name }}</span>
+      {% else %}
+      <a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary me-2">Login</a>
+      <a href="{{ url_for('auth.register') }}" class="btn btn-primary">Sign Up</a>
+      {% endif %}
+    </div>
+    
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="pt-5 my-1 text-muted d-flex">
+    <!-- Created by Daniel Amusin &middot; &copy; 2025 -->
+    <a class="ms-auto text-muted" href="{{ url_for('auth.logout') }}">Logout</div>
+  </footer>
+</div>
+    <script src="{{ url_for('static', filename='css/bootstrap.bundle.min.js') }}"></script>
+  </body>
+</html>
