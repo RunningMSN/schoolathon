@@ -16,7 +16,6 @@ def login():
     if request.method == 'POST':
         email = request.form.get('email')
         fruit_password = request.form.get('fruit')
-        print(fruit_password)
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.fruit_password, fruit_password):

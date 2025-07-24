@@ -1,11 +1,23 @@
 {% extends "base.html" %} {% block title %}Schoolathon{% endblock %} 
 {% block content %}
-<div class="border rounded p-3">
-	<h4>Albertus Magnus College</h4>
-	<p>
-		<span class="fw-bold">Region:</span> Northeast <br />
-		<span class="fw-bold">State:</span> Connecticut
-	</p>
+<div class="border rounded p-3 f">
+	{% if curr_school %}
+	<div class="d-flex justify-content-between">
+		<div>
+			<h4>{{ curr_school.name }}</h4>
+			<p>
+				<strong>{{ curr_school.state }}, {{ curr_school.region }}</strong>
+			</p>
+		</div>
+		<div style="margin-right: 10px">
+			<span role="button" tabindex="0" class="text-primary" data-bs-toggle="modal" data-bs-target="#instructionsModal">
+				<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="blue" class="bi bi-info-square-fill" viewBox="0 0 16 16">
+				<path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm8.93 4.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+				</svg>
+			</span>
+		</div>
+	</div>
+	
 	<form>
 		<div class="form-group">
 			<label for="inputName">Advisor Name</label>
@@ -26,5 +38,55 @@
 		</div>
 		<button type="submit" class="btn btn-primary my-2">Submit</button>
 	</form>
+	{% else %}
+	<h4>We did it! All schools have been completed.</h4>
+	<p>
+		Thank you so much for your help with this initiative.
+	</p>
+	{% endif %}
 </div>
+
+
+
+<div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="instructionsModalLabel">Instructions</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Insert instructions here
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 {% endblock %}
