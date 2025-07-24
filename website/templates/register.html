@@ -5,25 +5,28 @@
 	<form method="POST">
 		<div class="form-group">
 			<label for="inputName">What is your name?</label>
-			<input type="name" class="form-control" id="inputName" placeholder="Name" name="name">
+			<input type="name" class="form-control" id="inputName" placeholder="Name" name="name" onkeyup="registrationValid()">
 		</div>
 		<div class="form-group">
 			<label for="inputEmail">Email address</label>
-			<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+			<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" name="email" onkeyup="registrationValid()">
 			<small id="emailHelp" class="form-text text-muted">So we can send you a prize if you win!</small>
 		</div>
 		<div class="form-group">
 			<label for="inputFruit">Which of these fruit do you prefer most?</label>
-			<select class="form-control" id="inputFruit" name="fruit">
+			<select class="form-control" id="inputFruit" name="fruit" onclick="registrationValid()">
 				<option value="" disabled selected hidden>Choose a fruit...</option>
 				{% include "fruit.html" %}
 			</select>
 		</div>
 		<div class="form-group" style="margin-bottom: 5px">
 			<label for="inputTeam">Do you belong to a team?</label>
-			<input type="team" class="form-control" id="inputTeam" placeholder="Team Name" name="team">
+			<input type="team" class="form-control" id="inputTeam" placeholder="Team Name" name="team" onkeyup="registrationValid()">
 		</div>
-		<button type="submit" class="btn btn-primary">Submit</button>
+		<button type="submit" class="btn btn-primary" id="submitButton" disabled>Submit</button>
 	</form>
 </div>
+{% endblock %}
+{% block additional_js %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
 {% endblock %}

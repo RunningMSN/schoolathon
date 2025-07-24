@@ -8,18 +8,19 @@
 	<form method="POST">
 		<div class="form-group">
 			<label for="inputEmail">Email address</label>
-			<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+			<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" name="email" onkeyup="loginValid()">
 		</div>
 		<div class="form-group">
 			<label for="inputFruit">Which of these fruit do you prefer most?</label>
-			<select class="form-control" id="inputFruit" name="fruit">
+			<select class="form-control" id="inputFruit" name="fruit" onclick="loginValid()">
 				<option value="" disabled selected hidden>Choose a fruit...</option>
 				{% include "fruit.html" %}
 			</select>
 		</div>
-		<button type="submit" class="btn btn-primary my-2">Submit</button>
+		<button type="submit" class="btn btn-primary my-2" id="submitButton" disabled>Submit</button>
 	</form>
 </div>
-
-
+{% endblock %}
+{% block additional_js %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
 {% endblock %}
