@@ -4,7 +4,7 @@
 	{% if curr_school %}
 	<div class="d-flex justify-content-between">
 		<div>
-			<h4>{{ curr_school.name }}</h4>
+			<h4>{{ curr_school.school_name }} {% if curr_school.wiki|length > 0 %}(<a href="{{ curr_school.wiki }}">Wikipedia</a>) {% endif %}</h4>
 			<p>
 				<strong>{{ curr_school.state }}, {{ curr_school.region }}</strong>
 			</p>
@@ -19,22 +19,52 @@
 	</div>
 	
 	<form>
+		Does this school meet any of the following categories?
 		<div class="form-group">
-			<label for="inputName">Advisor Name</label>
-			<input type="name" class="form-control" id="inputName"  placeholder="Advisor Name">
+			<div class="form-check form-check-inline">
+				<input class="form-check-input" type="checkbox" id="ccCheck" value="cc">
+				<label class="form-check-label" for="ccCheck">Community College</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input class="form-check-input" type="checkbox" id="hbcuCheck" value="hbcu">
+				<label class="form-check-label" for="hbcuCheck">HBCU</label>
+			</div>
+			<div class="form-check form-check-inline">
+				<input class="form-check-input" type="checkbox" id="msiCheck" value="msi">
+				<label class="form-check-label" for="msiCheck">Minority Serving Institution</label>
+			</div>
 		</div>
-		<div class="form-group">
-			<label for="inputEmail">Advisor Email</label>
-			<input type="email" class="form-control" id="inputEmail"  placeholder="Email Address">
+		<p style="margin-top: 10px">
+			Enter advisor information if available. If no advisors found, please check the box.
+		</p>
+		<div id="advisorForm">
+			<div class="row" style="margin-bottom: 10px">
+				<div class="col">
+					<input type="text" class="form-control" placeholder="Advisor/Office Name" id="name-0" />
+				</div>
+				<div class="col">
+					<input type="text" class="form-control" placeholder="Email" id="email-0" />
+				</div>
+				<div class="col">
+					<select class="form-control" id="advisorType-0">
+						<option value="" disabled selected hidden>Select a Category</option>
+						<option>Pre-health Advisor</option>
+						<option>Biology Teacher</option>
+						<option>General Career Advisor</option>
+						<option>Other</option>
+					</select>
+				</div>
+				<div class="col-1 d-flex align-items-center justify-content-center" style="cursor: pointer;">
+					<svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="gray" class="bi bi-plus-square" viewBox="0 0 16 16" onclick="addRow()">
+						<path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
+						<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+					</svg>
+				</div>
+			</div>
 		</div>
-		<div class="form-group">
-			<label for="inputFruit">Advisor Type</label>
-			<select class="form-control" id="inputFruit">
-				<option>Pre-health Advisor</option>
-				<option>Biology Teacher</option>
-				<option>General Career Advisor</option>
-				<option>Other (Please Specify)</option>
-			</select>
+		<div class="mb-3 mr-1">
+			<label for="notesArea" class="form-label">Any Other Notes?</label>
+			<textarea class="form-control" id="notesArea" rows="2"></textarea>
 		</div>
 		<button type="submit" class="btn btn-primary my-2">Submit</button>
 	</form>
@@ -68,7 +98,7 @@
 
 
 
-<!-- Modal -->
+<!-- Instructions Modal -->
 <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -81,12 +111,11 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
-
-
-
+{% endblock %}
+{% block additional_js %}
+<script src="{{ url_for('static', filename='js/add.js') }}"></script>
 {% endblock %}

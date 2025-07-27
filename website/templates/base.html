@@ -33,7 +33,7 @@
     </a>
     <div class="ms-auto">
       {% if user.is_authenticated %}
-      <span class="fw-bold text-muted">Welcome {{ user.name }}</span>
+      <span class="fw-bold text-muted">Welcome {{ user.name }}. <a class="ms-auto text-muted" href="{{ url_for('auth.logout') }}">Logout</a></span>
       {% else %}
       <a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary me-2">Login</a>
       <a href="{{ url_for('auth.register') }}" class="btn btn-primary">Sign Up</a>
@@ -59,8 +59,7 @@
   </main>
 
   <footer class="pt-5 my-1 text-muted d-flex">
-    <!-- Created by Daniel Amusin &middot; &copy; 2025 -->
-    {% if user.is_authenticated %}<a class="ms-auto text-muted" href="{{ url_for('auth.logout') }}">Logout</div>{% endif %}
+    Created by APSA's Undergraduate Working Group  &middot; &copy; 2025
   </footer>
 </div>
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
