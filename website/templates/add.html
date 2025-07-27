@@ -18,35 +18,37 @@
 		</div>
 	</div>
 	
-	<form>
+	<form method="POST">
+		<input type="hidden" id="school_id" name="school_id" value="{{ curr_school.school_id }}" />
 		Does this school meet any of the following categories?
 		<div class="form-group">
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="checkbox" id="ccCheck" value="cc">
+				<input class="form-check-input" type="checkbox" id="ccCheck" value="cc" name="ccCheck">
 				<label class="form-check-label" for="ccCheck">Community College</label>
 			</div>
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="checkbox" id="hbcuCheck" value="hbcu">
+				<input class="form-check-input" type="checkbox" id="hbcuCheck" value="hbcu" name="hbcuCheck">
 				<label class="form-check-label" for="hbcuCheck">HBCU</label>
 			</div>
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="checkbox" id="msiCheck" value="msi">
+				<input class="form-check-input" type="checkbox" id="msiCheck" value="msi" name="msiCheck">
 				<label class="form-check-label" for="msiCheck">Minority Serving Institution</label>
 			</div>
 		</div>
-		<p style="margin-top: 10px">
+		<p class="mt-1 mb-1">
 			Enter advisor information if available. If no advisors found, please check the box.
 		</p>
 		<div id="advisorForm">
-			<div class="row" style="margin-bottom: 10px">
+			<div class="row mb-2">
+				<input type="hidden" id="advisorRow-0" name="advisorRow-0"/>
 				<div class="col">
-					<input type="text" class="form-control" placeholder="Advisor/Office Name" id="name-0" />
+					<input type="text" class="form-control" placeholder="Advisor/Office Name" id="name-0" name="name-0"/>
 				</div>
 				<div class="col">
-					<input type="text" class="form-control" placeholder="Email" id="email-0" />
+					<input type="text" class="form-control" placeholder="Email" id="email-0" name ="email-0"/>
 				</div>
 				<div class="col">
-					<select class="form-control" id="advisorType-0">
+					<select class="form-control" id="advisorType-0" name="advisorType-0">
 						<option value="" disabled selected hidden>Select a Category</option>
 						<option>Pre-health Advisor</option>
 						<option>Biology Teacher</option>
@@ -62,9 +64,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="mb-3 mr-1">
+		<div class="form-group mb-3">
+			<div class="form-check form-check-inline">
+				<input class="form-check-input" type="checkbox" id="noAdvisorsCheck" value="no_advisors" name="noAdvisorsCheck">
+				<label class="form-check-label" for="noAdvisorsCheck">Check if you could not find any advisors for this school.</label>
+			</div>
+		</div>
+		<div class="mb-3">
 			<label for="notesArea" class="form-label">Any Other Notes?</label>
-			<textarea class="form-control" id="notesArea" rows="2"></textarea>
+			<textarea class="form-control" id="notesArea" name="notes" rows="2"></textarea>
 		</div>
 		<button type="submit" class="btn btn-primary my-2">Submit</button>
 	</form>
@@ -95,8 +103,6 @@
     </div>
   </div>
 </div>
-
-
 
 <!-- Instructions Modal -->
 <div class="modal fade" id="instructionsModal" tabindex="-1" aria-labelledby="instructionsModalLabel" aria-hidden="true">

@@ -8,6 +8,7 @@ class User(db.Model, UserMixin):
     fruit_password = db.Column(db.String(150))
     name = db.Column(db.String(150))
     team = db.Column(db.String(150))
+    contributions = db.Column(db.Integer, default=0)
 
 class School(db.Model):
     school_id = db.Column(db.Integer, primary_key=True)
