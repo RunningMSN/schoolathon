@@ -51,6 +51,8 @@ def home():
             current_user.contributions += 1
 
             db.session.commit()
+        else:
+            flash('You must either enter an advisor, or check that no advisors were found.', category='error')
 
     incomplete_schools = School.query.filter_by(completed=False).all()
     if len(incomplete_schools) > 0:
