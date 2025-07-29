@@ -29,7 +29,8 @@
 <div class="col-lg-8 mx-auto p-3 py-md-5">
   <header class="d-flex align-items-center pb-2 mb-3 border-bottom">
     <a href="{{ url_for('pages.home') }}" class="d-flex align-items-center text-dark text-decoration-none">
-      <span class="fs-4">APSA Schoolathon</span>
+      <img src="{{ url_for('static', filename='images/schoolathon.png') }}" style="height: 70px" class="mt-2"></img>
+      <!-- <span class="fs-4">APSA Schoolathon</span> -->
     </a>
     <div class="ms-auto">
       {% if user.is_authenticated %}
@@ -59,7 +60,7 @@
   </main>
 
   <footer class="pt-5 my-1 text-muted d-flex">
-    Created by APSA's Undergraduate Working Group  &middot; &copy; 2025
+    Created by APSA's Undergraduate Outreach Working Group  &middot; &copy; 2025
   </footer>
 </div>
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
