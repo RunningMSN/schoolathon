@@ -4,7 +4,7 @@
 	{% if curr_school %}
 	<div class="d-flex justify-content-between">
 		<div>
-			<h4>{{ curr_school.school_name }} {% if curr_school.wiki|length > 0 %}(<a href="{{ curr_school.wiki }}">Wikipedia</a>) {% endif %}</h4>
+			<h4>{{ curr_school.school_name }} {% if curr_school.wiki|length > 0 %}(<a href="{{ curr_school.wiki }}" target="_blank" >Wikipedia</a>) {% endif %}</h4>
 			<p>
 				<strong>{{ curr_school.state }}, {{ curr_school.region }} Region</strong>
 			</p>
