@@ -29,7 +29,7 @@ def home():
                 if len(email) > 0:
                     found_advisors = True
 
-                    new_advisor = Advisor(school_id=school_id, advisor_name=name, email=email, type=advisor_type)
+                    new_advisor = Advisor(school_id=school_id, advisor_name=name, email=email, type=advisor_type, user_id=current_user.id)
                     db.session.add(new_advisor)
                     db.session.commit()
         
@@ -46,6 +46,7 @@ def home():
                 school.notes = request.form.get('notes')
 
             school.completed = True
+            school.user_id = current_user.id
 
             # Add contribution count
             current_user.contributions += 1

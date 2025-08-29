@@ -29,3 +29,4 @@ class Advisor(db.Model):
     advisor_name = db.Column(db.String(150))
     email = db.Column(db.String(150))
     type = db.Column(db.String(150))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
