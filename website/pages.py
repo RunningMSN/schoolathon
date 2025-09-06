@@ -1,9 +1,10 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
 from . import db
-from .models import School, Advisor
+from .models import School, Advisor, User
 import json
 import random
+import pandas as pd
 
 pages = Blueprint('pages', __name__)
 
@@ -62,3 +63,21 @@ def home():
         random_school = None
 
     return render_template("add.html", user=current_user, curr_school=random_school)
+
+
+@pages.route('/leaderboard', methods=['GET', 'POST'])
+@login_required
+def leaderboard():
+    users_query = pd.read_sql("SELECT name,contributions,team FROM user", db.engine)
+    top_users = users_query[users_query['contributions'] > 0]
+    top_users = top_users.sort_values('contributions', ascending=False)[0:20]
+    
+    
+    top_teams = users_query.groupby('team', as_index=False).sum(numeric_only=True)
+
+    top_teams = top_teams[top_teams['team'].notna() & (top_teams['team'] != "")]
+
+    top_teams = top_teams.sort_values('contributions', ascending=False).head(20)
+
+
+    return render_template("leaderboard.html", user=current_user, top_users=top_users, top_teams=top_teams)

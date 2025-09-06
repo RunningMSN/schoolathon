@@ -1,5 +1,10 @@
 {% extends "base.html" %} {% block title %}Schoolathon{% endblock %} 
 {% block content %}
+<div class="d-flex">
+    <a class="btn btn-primary mb-1 me-2" disabled>Contribute</a>
+    <a href="{{ url_for('pages.leaderboard') }}" class="btn btn-outline-primary mb-1">Leaderboard</a>
+</div>
+
 <div class="border rounded p-3 f">
 	{% if curr_school %}
 	<div class="d-flex justify-content-between">

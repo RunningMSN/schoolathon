@@ -1,0 +1,55 @@
+{% extends "base.html" %} {% block title %}Schoolathon{% endblock %} 
+{% block content %}
+<!-- <div class="d-flex justify-content-end"> -->
+<div class="d-flex ">
+    <a href="{{ url_for('pages.home') }}" class="btn btn-outline-primary mb-1 me-2">Contribute</a>
+    <a class="btn btn-primary mb-1" disabled>Leaderboard</a>
+</div>
+
+<div class="border rounded p-3 f">
+	<ul class="nav nav-tabs" id="tabs" role="tablist">
+		<li class="nav-item" role="presentation">
+			<button class="nav-link active" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button" role="tab" aria-controls="users" aria-selected="true">Users</button>
+		</li>
+		<li class="nav-item" role="presentation">
+			<button class="nav-link" id="teams-tab" data-bs-toggle="tab" data-bs-target="#teams" type="button" role="tab" aria-controls="teams" aria-selected="false">Teams</button>
+		</li>
+	</ul>
+	<!-- Users Leaderboard-->
+	<div class="tab-content" id="tabsContent">
+		<div class="tab-pane fade show active" id="users" role="tabpanel" aria-labelledby="users-tab">
+			<table class="table">
+				<tr>
+					<th>User</th>
+					<th>Contributions</th>
+				</tr>
+				{% for index, user in top_users.iterrows() %}
+				<tr>
+					<td>{{ user['name'] }}</td>
+					<td>{{ user['contributions'] }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<!-- -->
+		<div class="tab-pane fade" id="teams" role="tabpanel" aria-labelledby="teams-tab">
+			<table class="table">
+				<tr>
+					<th>Team</th>
+					<th>Contributions</th>
+				</tr>
+				{% for index, team in top_teams.iterrows() %}
+				<tr>
+					<td>{{ team['team'] }}</td>
+					<td>{{ team['contributions'] }}</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+
+</div>
+
+
+
+{% endblock %}
