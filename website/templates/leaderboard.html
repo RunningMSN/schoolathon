@@ -7,14 +7,44 @@
 </div>
 
 <div class="border rounded p-3 f">
-	<ul class="nav nav-tabs" id="tabs" role="tablist">
+	<p>
+		<div class="btn btn-outline-success rounded-pill px-3 mb-2 mb-lg-0">
+			<span class="d-flex align-items-center">
+				<i class="bi bi-star-fill me-2"></i>
+				<span class="small">{{ total_contributions }} Schools Today</span>
+			</span>
+		</div>
+
+		<div class="btn btn-outline-warning rounded-pill px-3 mb-2 mb-lg-0">
+			<span class="d-flex align-items-center">
+				<i class="bi bi-patch-exclamation-fill me-2"></i>
+				<span class="small">{{ incomplete_schools_count }} Schools Left</span>
+			</span>
+		</div>
+
+		<div class="btn btn-outline-primary rounded-pill px-3 mb-2 mb-lg-0">
+			<span class="d-flex align-items-center">
+				<i class="bi bi-person-circle me-2"></i>
+				<span class="small">{{ current_advisors_count }} Advisors Identified</span>
+			</span>
+		</div>
+
+		<div class="btn btn-outline-danger rounded-pill px-3 mb-2 mb-lg-0">
+			<span class="d-flex align-items-center">
+				<i class="bi bi-building me-2"></i>
+				<span class="small">{{ complete_schools_count }} Schools Searched</span>
+			</span>
+		</div>
+	</p>
+	<!-- No TABS NEEDED WHILE NOT USING TEAMS -->
+	<!-- <ul class="nav nav-tabs" id="tabs" role="tablist">
 		<li class="nav-item" role="presentation">
 			<button class="nav-link active" id="users-tab" data-bs-toggle="tab" data-bs-target="#users" type="button" role="tab" aria-controls="users" aria-selected="true">Users</button>
 		</li>
 		<li class="nav-item" role="presentation">
 			<button class="nav-link" id="teams-tab" data-bs-toggle="tab" data-bs-target="#teams" type="button" role="tab" aria-controls="teams" aria-selected="false">Teams</button>
 		</li>
-	</ul>
+	</ul> -->
 	<!-- Users Leaderboard-->
 	<div class="tab-content" id="tabsContent">
 		<div class="tab-pane fade show active" id="users" role="tabpanel" aria-labelledby="users-tab">
